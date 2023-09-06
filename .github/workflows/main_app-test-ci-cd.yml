@@ -34,7 +34,7 @@ jobs:
           tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_d2585e5e8749449db285ee7d5583ceef }}/maillotcedric/test-ci-cd:${{ github.sha }}
           file: ./Dockerfile
 
-    deploy:
+  deploy:
       runs-on: ubuntu-latest
       needs: build
       environment:
