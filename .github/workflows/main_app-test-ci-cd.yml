@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ${{ secrets.AzureAppService_ContainerUsername_d2585e5e8749449db285ee7d5583ceef }}/test-ci-cd:latest
+        tags: ${{ secrets.AzureAppService_ContainerUsername_d2585e5e8749449db285ee7d5583ceef }}/test-ci-cd:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'app-test-ci-cd'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_36469923fdc74e0f83c9bd09a83885b7 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_d2585e5e8749449db285ee7d5583ceef }}/maillotcedric/test-ci-cd:${{ github.sha }}'
+        images: '${{ secrets.AzureAppService_ContainerUsername_d2585e5e8749449db285ee7d5583ceef }}/test-ci-cd:${{ github.sha }}'
